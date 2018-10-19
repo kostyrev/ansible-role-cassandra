@@ -1,0 +1,16 @@
+---
+galaxy_info:
+  author: Aleksandr Kostyrev
+  description: Ansible role for installing Apache Cassandra
+  license: BSD
+  min_ansible_version: 2.1
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+  galaxy_tags:
+    - database
+dependencies: []

@@ -1,0 +1,34 @@
+---
+# tasks file for kostyrev.cassandra
+- block:
+    - name: Configure the Apache Cassandra Apt Repository
+      apt_repository:
+        filename: /etc/apt/sources.list.d/cassandra.sources
+        repo: "deb http://www.apache.org/dist/cassandra/debian {{ cassandra_dist }} main"
+        state: present
+
+    - name: Add the Apache Apt Key
+      apt_key:
+        keyserver: pool.sks-keyservers.net
+        id: A278B781FE4B2BDA
+
+    - name: Add an apt signing key
+      apt_key:
+        url: https://www.apache.org/dist/cassandra/KEYS
+        state: present
+
+    - name: prevent daemons from starting after installing a package
+      copy:
+        dest: /usr/sbin/policy-rc.d
+        mode: '0755'
+        content: "#!/bin/sh\nexit 101\n"
+
+    - name: Install latest Cassandra package
+      apt:
+        name: cassandra
+        update_cache: yes
+        state: present
+        install_recommends: no
+
+  when:
+    - ansible_os_family == 'Debian'

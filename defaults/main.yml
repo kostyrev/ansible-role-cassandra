@@ -1,0 +1,3 @@
+---
+# defaults file for kostyrev.cassandra
+cassandra_dist: 22x
