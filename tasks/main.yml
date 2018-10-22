@@ -4,7 +4,7 @@
     - name: Configure the Apache Cassandra Apt Repository
       apt_repository:
         filename: /etc/apt/sources.list.d/cassandra.sources
-        repo: "deb http://www.apache.org/dist/cassandra/debian {{ cassandra_dist }} main"
+        repo: "deb http://www.apache.org/dist/cassandra/debian {{ cassandra_repo_dist }} main"
         state: present
 
     - name: Add the Apache Apt Key
@@ -23,9 +23,9 @@
         mode: '0755'
         content: "#!/bin/sh\nexit 101\n"
 
-    - name: Install latest Cassandra package
+    - name: Install Cassandra package
       apt:
-        name: cassandra
+        name: cassandra={{ cassandra_version }}
         update_cache: yes
         state: present
         install_recommends: no

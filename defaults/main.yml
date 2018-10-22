@@ -1,3 +1,4 @@
 ---
 # defaults file for kostyrev.cassandra
-cassandra_dist: 22x
+cassandra_version: 2.2.13
+cassandra_repo_dist: "{{ cassandra_version.rpartition('.')[0].replace('.','') + 'x' }}"
