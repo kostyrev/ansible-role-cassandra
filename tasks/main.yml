@@ -17,7 +17,7 @@
         url: https://www.apache.org/dist/cassandra/KEYS
         state: present
 
-    - name: prevent daemons from starting after installing a package
+    - name: Prevent daemons from starting after installing a package
       copy:
         dest: /usr/sbin/policy-rc.d
         mode: '0755'
