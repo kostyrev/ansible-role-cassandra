@@ -30,5 +30,10 @@
         state: present
         install_recommends: no
 
+    - name: Pin cassandra package
+      dpkg_selections:
+        name: cassandra
+        selection: hold
+
   when:
     - ansible_os_family == 'Debian'
